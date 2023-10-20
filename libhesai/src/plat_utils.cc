@@ -83,6 +83,16 @@ uint64_t GetMicroTickCountU64() {
   return ret;
 }
 
+uint64_t GetMicroTickRealU64() {
+  uint64_t ret = 0;
+  timespec time;
+  memset(&time, 0, sizeof(time));
+  if (clock_gettime(CLOCK_REALTIME, &time) == 0) {
+    ret = time.tv_nsec / 1000 + time.tv_sec * 1000000;
+  }
+  return ret;
+}
+
 int GetAvailableCPUNum() { return sysconf(_SC_NPROCESSORS_ONLN); }
 
 int GetAnglesFromFile(

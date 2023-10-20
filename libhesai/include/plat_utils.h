@@ -52,6 +52,7 @@ extern unsigned int GetTickCount();
 extern unsigned int GetMicroTickCount();
 
 extern uint64_t GetMicroTickCountU64();
+extern uint64_t GetMicroTickRealU64();
 
 extern int GetAvailableCPUNum();
 

@@ -380,7 +380,8 @@ int Udp3_2Parser<T_Point>::DecodePacket(LidarDecodedPacket<T_Point> &output, con
                                           sizeof(HS_LIDAR_TAIL_QT_V2));
     }                                      
     
-    output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+    // output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+    output.sensor_timestamp = GetMicroTickRealU64();
     this->spin_speed_ = pTail->m_u16MotorSpeed;
     for (int i = 0; i < pHeader->GetBlockNum(); i++) {
       // point to channel unit addr
@@ -455,7 +456,8 @@ int Udp3_2Parser<T_Point>::DecodePacket(LidarDecodedPacket<T_Point> &output, con
                     pHeader->HasFunctionSafety()
                 ? sizeof(HS_LIDAR_FUNCTION_SAFETY)
                 : 0);
-    output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+    // output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+    output.sensor_timestamp = GetMicroTickRealU64();
     this->spin_speed_ = pTail->m_u16MotorSpeed;
     for (int i = 0; i < pHeader->GetBlockNum(); i++) {
       // point to channel unit addr

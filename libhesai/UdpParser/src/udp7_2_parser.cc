@@ -251,7 +251,8 @@ int Udp7_2Parser<T_Point>::DecodePacket(LidarDecodedPacket<T_Point> &output, con
   output.points_num = pHeader->GetChannelNum();
   output.scan_complete = false;
   output.distance_unit = pHeader->GetDistUnit();
-  output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+  // output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+  output.sensor_timestamp = GetMicroTickRealU64();
   int index = 0;
   float minAzimuth = 0;
   float maxAzimuth = 0;

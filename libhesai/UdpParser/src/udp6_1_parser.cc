@@ -117,7 +117,8 @@ int Udp6_1Parser<T_Point>::DecodePacket(LidarDecodedPacket<T_Point> &output, con
   // 不填则仅显示很小一部分点云
   output.scan_complete = false;
   // 不填可以播放，只是显示的时间戳不对
-  output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+  // output.sensor_timestamp = pTail->GetMicroLidarTimeU64();
+  output.sensor_timestamp = output.host_timestamp;
   output.distance_unit = pHeader->GetDistUnit();
   int index = 0;
   float minAzimuth = 0;
